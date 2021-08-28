@@ -55,6 +55,25 @@ class Hashtable:
                     keys_result.append(key)
       
         return keys_result
+
+
+    def remove(self, key):
+        
+        address = self._hash(key)
+        
+        if self.data[address]:
+        
+            for i in range(0, len(self.data[address])):
+                
+                if self.data[address][i][0] == key:
+                    
+                    self.data[address].pop(i)
+                    
+            if self.data[address] == []:
+
+                self.data[address] = None
+                        
+        return None
 	
 
 
@@ -67,14 +86,14 @@ print(h.get('grapes'))
 print(h.keys())
 '''
 
-k = Hashtable(2)
+k = Hashtable(50)
 k.set('grapes', 10000)
 k.set('apples', 20000)
 print(k)
 print(k.get('grapes'))
 print(k.get('apples'))
 print(k.keys())
-
-
+print(k.remove('apples'))
+print(k)
 
 
