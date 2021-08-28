@@ -55,26 +55,3 @@ class Hashtable:
                     keys_result.append(key)
       
         return keys_result
-	
-
-
-
-'''
-h = Hashtable(50)
-h.set('grapes', 10000)
-h.set('grapes', 20000)
-print(h.get('grapes'))
-print(h.keys())
-'''
-
-k = Hashtable(2)
-k.set('grapes', 10000)
-k.set('apples', 20000)
-print(k)
-print(k.get('grapes'))
-print(k.get('apples'))
-print(k.keys())
-
-
-
-
