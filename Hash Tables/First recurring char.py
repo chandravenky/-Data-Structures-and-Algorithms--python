@@ -17,7 +17,7 @@ def first_recurring_char(input_array):
 
 #first_recurring_char([2,5,1,2,3,5,1,2,4])
 
-print(first_recurring_char([2,1,1,2,3,5,1,2,4]))
+
+#first_recurring_char([2,1,1,2,3,5,1,2,4])
 #first_recurring_char([2,3,4,5])
-    
-    
+
