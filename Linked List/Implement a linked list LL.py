@@ -39,15 +39,35 @@ class LinkedList():
         
     def insert(self, index, value):
 
+        if index ==0:
+          self.prepend(value)
+          return None
+
+        elif index >=self.length-1:
+          self.append(value)
+          return None
+
         currentNode = self.head
         for i in range(0, index):
-          print(i)
           currentNode = currentNode.next
 
         newNode = Node(value)
         nextNode = currentNode.next
         currentNode.next = newNode
         newNode.next = nextNode  
+        self.length = self.length +1
+
+    def remove(self, index):
+
+        currentNode = self.head
+        for i in range(0, index-1):
+
+          currentNode = currentNode.next
+
+        deleteNode = currentNode.next
+        nextNode = deleteNode.next
+        currentNode.next = nextNode
+
 
     def print1(self):
 
@@ -76,5 +96,7 @@ myLL.append(25)
 myLL.print1()
 myLL.insert(3,12)
 myLL.print1()
-myLL.insert(5,27)
+myLL.insert(0,1)
+myLL.print1()
+myLL.remove(3)
 myLL.print1()
