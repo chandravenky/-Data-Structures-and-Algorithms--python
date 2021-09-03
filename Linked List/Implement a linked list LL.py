@@ -15,51 +15,64 @@ class Node():
 
 class LinkedList():
 
-    def __init__(self):
-      self.head = None
-      self.tail = None
+    def __init__(self, value):
+        
+      self.head = Node(value)
+      self.tail = self.head
+      self.length = 1
+      
+    def __str__(self):
+        return str(self.__dict__)
     
     def append(self, data):
-        
-        if self.head == None:
-            self.head = Node(data)
-            self.tail = Node(data)
-            self.length = 1
-        
-        else:
-            self.head.next = Node(data)
-            self.tail = Node(data)
-            self.length = self.length +1
+        new_node = Node(data)
+        self.tail.next = new_node
+        self.tail = new_node
+        self.length = self.length +1
     
     def prepend(self, data):
         
-        if self.head == None:
-            self.head = Node(data)
-            self.tail = Node(data)
-            self.length = 1
+        new_node = Node(data)
+        new_node.next = self.head
+        self.head = new_node
+        self.length = self.length +1
         
-        else:
-            temp_node = self.head
-            self.head = Node(data)
-            self.head.next = temp_node
-            self.length = self.length +1
-    
-    def print_list(self):
+    def insert(self, index, value):
+
+        currentNode = self.head
+        for i in range(0, index):
+          print(i)
+          currentNode = currentNode.next
+
+        newNode = Node(value)
+        nextNode = currentNode.next
+        currentNode.next = newNode
+        newNode.next = nextNode  
+
+    def print1(self):
+
         temp = self.head
-        i = 0
-        while i < self.length:
-            print(temp.data, end='-->')
+
+        while temp != None:
+
+            print(temp.data, end = ' ')
+
             temp = temp.next
-            i += 1
+
         print()
 
-myLL = LinkedList()
-print(myLL)
+        print("Length = " + str(self.length))
+
+myLL = LinkedList(10)
+myLL.prepend(7)
+myLL.print1()
 myLL.append(10)
-myLL.print_list()
+myLL.print1()
 myLL.append(20)
-myLL.print_list()
+myLL.print1()
 myLL.prepend(5)
-myLL.print_list()
-
-
+myLL.print1()
+myLL.append(25)
+myLL.print1()
+myLL.insert(3,12)
+myLL.print1()

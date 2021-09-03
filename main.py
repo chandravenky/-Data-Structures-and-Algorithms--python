@@ -36,16 +36,19 @@ class LinkedList():
         new_node.next = self.head
         self.head = new_node
         self.length = self.length +1
-    
-    def print_list(self):
-        temp = self.head
-        i = 0
-        while i < self.length:
-            print(temp.data, end='-->')
-            temp = temp.next
-            i += 1
-        print()
         
+    def insert(self, index, value):
+
+        currentNode = self.head
+        for i in range(0, index):
+          print(i)
+          currentNode = currentNode.next
+
+        newNode = Node(value)
+        nextNode = currentNode.next
+        currentNode.next = newNode
+        newNode.next = nextNode  
+
     def print1(self):
 
         temp = self.head
@@ -71,4 +74,5 @@ myLL.prepend(5)
 myLL.print1()
 myLL.append(25)
 myLL.print1()
-
+myLL.insert(3,12)
+myLL.print1()
