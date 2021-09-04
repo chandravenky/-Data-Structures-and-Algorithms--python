@@ -59,6 +59,11 @@ class LinkedList():
 
     def remove(self, index):
 
+        if index==0:
+          self.head = self.head.next
+          self.length = self.length -1
+          return None
+
         currentNode = self.head
         for i in range(0, index-1):
 
@@ -67,6 +72,7 @@ class LinkedList():
         deleteNode = currentNode.next
         nextNode = deleteNode.next
         currentNode.next = nextNode
+        self.length = self.length -1
 
 
     def print1(self):
@@ -100,3 +106,6 @@ myLL.insert(0,1)
 myLL.print1()
 myLL.remove(3)
 myLL.print1()
+myLL.remove(0)
+myLL.print1()
+print(myLL.head.data)
