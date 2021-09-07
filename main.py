@@ -36,7 +36,9 @@ class DoublyLinkedList():
         
         new_node = Node(data)
         new_node.next = self.head
+        self.head.prev = new_node
         self.head = new_node
+        
         self.length = self.length +1
         
     def insert(self, index, value):
@@ -96,9 +98,10 @@ class DoublyLinkedList():
 myLL = DoublyLinkedList(10)
 myLL.append(15)
 myLL.print1()
-print(myLL)
-
-
+myLL.append(20)
+myLL.print1()
+myLL.prepend(5)
+myLL.print1()
 
 # myLL.prepend(7)
 # myLL.print1()
