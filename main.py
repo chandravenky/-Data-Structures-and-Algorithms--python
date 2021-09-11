@@ -52,13 +52,15 @@ class DoublyLinkedList():
           return None
 
         currentNode = self.head
-        for i in range(0, index):
+        for i in range(0, index-1):
           currentNode = currentNode.next
 
         newNode = Node(value)
         nextNode = currentNode.next
         currentNode.next = newNode
-        newNode.next = nextNode  
+        newNode.prev = currentNode
+        newNode.next = nextNode 
+        nextNode.prev = currentNode
         self.length = self.length +1
 
     def remove(self, index):
@@ -101,6 +103,8 @@ myLL.print1()
 myLL.append(20)
 myLL.print1()
 myLL.prepend(5)
+myLL.print1()
+myLL.insert(2,12)
 myLL.print1()
 
 # myLL.prepend(7)
