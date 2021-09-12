@@ -67,6 +67,7 @@ class DoublyLinkedList():
 
         if index==0:
           self.head = self.head.next
+          self.head.prev = None
           self.length = self.length -1
           return None
 
@@ -78,6 +79,7 @@ class DoublyLinkedList():
         deleteNode = currentNode.next
         nextNode = deleteNode.next
         currentNode.next = nextNode
+        nextNode.prev = currentNode
         self.length = self.length -1
 
 
@@ -105,6 +107,8 @@ myLL.print1()
 myLL.prepend(5)
 myLL.print1()
 myLL.insert(2,12)
+myLL.print1()
+myLL.remove(2)
 myLL.print1()
 
 # myLL.prepend(7)
