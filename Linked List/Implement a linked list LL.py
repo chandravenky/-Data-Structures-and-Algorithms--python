@@ -74,6 +74,35 @@ class LinkedList():
         currentNode.next = nextNode
         self.length = self.length -1
 
+    def reverse(self):
+
+      currentNode = self.head
+      previousNode = None
+      self.tail = self.head
+
+      for i in range(0, self.length):
+
+        #Reference
+        
+        nextNode = currentNode.next
+
+        #Reverse
+        currentNode.next = previousNode
+
+        #Change reference
+        previousNode = currentNode
+        currentNode = nextNode
+      self.head = previousNode
+
+    def reverse1(self):
+        prev = None
+        self.tail = self.head 
+        while self.head != None:
+          temp = self.head
+          self.head = self.head.next
+          temp.next = prev
+          prev = temp  
+        self.head = temp
 
     def print1(self):
 
@@ -108,4 +137,6 @@ myLL.remove(3)
 myLL.print1()
 myLL.remove(0)
 myLL.print1()
-print(myLL.head.data)
+print("Reversing....")
+myLL.reverse()
+myLL.print1()

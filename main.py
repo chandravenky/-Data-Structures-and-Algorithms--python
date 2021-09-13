@@ -11,10 +11,9 @@ class Node():
     def __init__(self, data):    
         self.data= data
         self.next = None
-        self.prev = None
     
 
-class DoublyLinkedList():
+class LinkedList():
 
     def __init__(self, value):
         
@@ -23,22 +22,19 @@ class DoublyLinkedList():
       self.length = 1
       
     def __str__(self):
-        return '{self.head.next.data} {self.tail.prev.data}'.format(self=self)
+        return str(self.__dict__)
     
     def append(self, data):
         new_node = Node(data)
         self.tail.next = new_node
         self.tail = new_node
-        new_node.prev = self.tail
         self.length = self.length +1
     
     def prepend(self, data):
         
         new_node = Node(data)
         new_node.next = self.head
-        self.head.prev = new_node
         self.head = new_node
-        
         self.length = self.length +1
         
     def insert(self, index, value):
@@ -52,22 +48,19 @@ class DoublyLinkedList():
           return None
 
         currentNode = self.head
-        for i in range(0, index-1):
+        for i in range(0, index):
           currentNode = currentNode.next
 
         newNode = Node(value)
         nextNode = currentNode.next
         currentNode.next = newNode
-        newNode.prev = currentNode
-        newNode.next = nextNode 
-        nextNode.prev = currentNode
+        newNode.next = nextNode  
         self.length = self.length +1
 
     def remove(self, index):
 
         if index==0:
           self.head = self.head.next
-          self.head.prev = None
           self.length = self.length -1
           return None
 
@@ -79,9 +72,37 @@ class DoublyLinkedList():
         deleteNode = currentNode.next
         nextNode = deleteNode.next
         currentNode.next = nextNode
-        nextNode.prev = currentNode
         self.length = self.length -1
 
+    def reverse(self):
+
+      currentNode = self.head
+      previousNode = None
+      self.tail = self.head
+
+      for i in range(0, self.length):
+
+        #Reference
+        
+        nextNode = currentNode.next
+
+        #Reverse
+        currentNode.next = previousNode
+
+        #Change reference
+        previousNode = currentNode
+        currentNode = nextNode
+      self.head = previousNode
+
+    def reverse1(self):
+        prev = None
+        self.tail = self.head 
+        while self.head != None:
+          temp = self.head
+          self.head = self.head.next
+          temp.next = prev
+          prev = temp  
+        self.head = temp
 
     def print1(self):
 
@@ -97,36 +118,25 @@ class DoublyLinkedList():
 
         print("Length = " + str(self.length))
 
-
-
-myLL = DoublyLinkedList(10)
-myLL.append(15)
+myLL = LinkedList(10)
+myLL.prepend(7)
+myLL.print1()
+myLL.append(10)
 myLL.print1()
 myLL.append(20)
 myLL.print1()
 myLL.prepend(5)
 myLL.print1()
-myLL.insert(2,12)
+myLL.append(25)
 myLL.print1()
-myLL.remove(2)
+myLL.insert(3,12)
 myLL.print1()
-
-# myLL.prepend(7)
-# myLL.print1()
-# myLL.append(10)
-# myLL.print1()
-# myLL.append(20)
-# myLL.print1()
-# myLL.prepend(5)
-# myLL.print1()
-# myLL.append(25)
-# myLL.print1()
-# myLL.insert(3,12)
-# myLL.print1()
-# myLL.insert(0,1)
-# myLL.print1()
-# myLL.remove(3)
-# myLL.print1()
-# myLL.remove(0)
-# myLL.print1()
-# print(myLL.head.data)
+myLL.insert(0,1)
+myLL.print1()
+myLL.remove(3)
+myLL.print1()
+myLL.remove(0)
+myLL.print1()
+print("Reversing....")
+myLL.reverse()
+myLL.print1()
