@@ -94,16 +94,6 @@ class LinkedList():
         currentNode = nextNode
       self.head = previousNode
 
-    def reverse1(self):
-        prev = None
-        self.tail = self.head 
-        while self.head != None:
-          temp = self.head
-          self.head = self.head.next
-          temp.next = prev
-          prev = temp  
-        self.head = temp
-
     def print1(self):
 
         temp = self.head
