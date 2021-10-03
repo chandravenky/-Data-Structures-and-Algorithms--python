@@ -11,13 +11,16 @@ class Stack:
     self.length = self.length + 1
     return self
 
+  def peek(self):
+    return self.arr[len(self.arr)-1]
+
 myStack = Stack();
 myStack.push('Google')
 myStack.push('Discord')
 myStack.push('Udemy')
 print(myStack)
-# peeked_val = myStack.peek()
-# print(peeked_val)
+peeked_val = myStack.peek()
+print(peeked_val)
 # print(myStack.length)
 # myStack.pop()
 # myStack.printt()
