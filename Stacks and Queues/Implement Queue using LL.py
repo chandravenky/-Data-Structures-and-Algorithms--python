@@ -21,6 +21,8 @@ class Queue:
       self.last = new_node
       self.length = self.length + 1
 
+  def peek(self):
+    return self.first.value
 
   def printt(self):
     temp = self.last
@@ -35,3 +37,5 @@ myQueue.enqueue('Google')
 myQueue.enqueue('Discord')
 myQueue.enqueue('Udemy')
 myQueue.printt()
+x = myQueue.peek()
+print(x)
