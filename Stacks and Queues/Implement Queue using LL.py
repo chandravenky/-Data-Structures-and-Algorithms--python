@@ -17,15 +17,21 @@ class Queue:
       self.length = self.length + 1
 
     else:
-      new_node.next = self.last
+      self.last.next = new_node
       self.last = new_node
       self.length = self.length + 1
 
   def peek(self):
     return self.first.value
 
+  # def dequeue(self):
+  #   dequeued_val = self.first
+  #   self.length = self.length + 1
+
+  #   return dequeued_val
+    
   def printt(self):
-    temp = self.last
+    temp = self.first
     while temp != None:
       print(temp.value , end = '->')
       temp = temp.next
@@ -39,3 +45,5 @@ myQueue.enqueue('Udemy')
 myQueue.printt()
 x = myQueue.peek()
 print(x)
+# myQueue.dequeue()
+# myQueue.printt()
