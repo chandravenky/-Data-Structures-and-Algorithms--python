@@ -24,11 +24,12 @@ class Queue:
   def peek(self):
     return self.first.value
 
-  # def dequeue(self):
-  #   dequeued_val = self.first
-  #   self.length = self.length + 1
+  def dequeue(self):
+    dequeued_val = self.first
+    self.first = self.first.next
+    self.length = self.length - 1
 
-  #   return dequeued_val
+    return dequeued_val
     
   def printt(self):
     temp = self.first
@@ -43,7 +44,9 @@ myQueue.enqueue('Google')
 myQueue.enqueue('Discord')
 myQueue.enqueue('Udemy')
 myQueue.printt()
-x = myQueue.peek()
-print(x)
-# myQueue.dequeue()
-# myQueue.printt()
+# x = myQueue.peek()
+# print(x)
+myQueue.dequeue()
+myQueue.printt()
+myQueue.dequeue()
+myQueue.printt()
