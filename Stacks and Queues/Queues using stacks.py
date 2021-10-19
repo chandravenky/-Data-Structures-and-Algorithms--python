@@ -21,13 +21,11 @@ class MyQueue(object):
           self.first.append(self.last.pop())
         
         return self.first.pop()
-        
 
     def peek(self):
-        """
-        :rtype: int
-        """
-        
+        if len(self.last)>0:
+          return self.last[0]
+        return self.first[len(self.first)-1]
 
     def empty(self):
         """
@@ -36,14 +34,24 @@ class MyQueue(object):
         
 
 
+# Your MyQueue object will be instantiated and called as such:
 obj = MyQueue()
 obj.push("Jerry")
 print(obj.first)
 print(obj.last)
 obj.push("Sherry")
+print(f"peek value => {obj.peek()}")
 print(obj.first)
 print(obj.last)
 print(obj.pop())
 print(obj.first)
 print(obj.last)
+obj.push("Limca")
+print(f"peek value => {obj.peek()}")
+print(obj.first)
+print(obj.last)
+print(obj.pop())
+print(obj.first)
+print(obj.last)
+print(f"peek value => {obj.peek()}")
 
