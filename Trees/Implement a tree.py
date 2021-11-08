@@ -49,6 +49,24 @@ class BinarySearchTree:
           else:
             current_node = current_node.right
 
+  def lookup(self, value):
+      
+      if not self.root:
+          return False
+      
+      current_node = self.root
+      while current_node:
+          
+          if value <current_node.data:
+              current_node= current_node.left
+          
+          elif value >current_node.data:
+              current_node= current_node.right
+          elif current_node.data == value:
+              return current_node
+          
+      return False
+
   def print_tree(self):
     if self.root != None:
       self.printt(self.root)
@@ -67,3 +85,6 @@ bst.insert(6)
 bst.insert(12)
 bst.insert(8)
 bst.print_tree()
+x = bst.lookup(5)
+print(x)
+bst.printt(x)
