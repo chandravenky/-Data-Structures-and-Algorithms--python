@@ -54,6 +54,10 @@ class BinarySearchTree:
     
     return traverse_in_order(self.root, [])
 
+  def recursive_dfs_pre_order(self):
+    
+    return traverse_pre_order(self.root, [])
+
 def traverse_in_order(node, list1):
 
   if node.left:
@@ -66,6 +70,17 @@ def traverse_in_order(node, list1):
 
   return list1
 
+def traverse_pre_order(node, list1):
+
+  list1.append(node.val)
+
+  if node.left:
+    traverse_pre_order(node.left, list1)
+
+  if node.right:
+    traverse_pre_order(node.right, list1)
+
+  return list1
 
 tree = BinarySearchTree()
 tree.insert(9)
@@ -79,5 +94,5 @@ tree.insert(1)
 # tree.print_tree()
 # print(tree.breadth_first_search())
 print(tree.recursive_dfs_in_order())
-
+print(tree.recursive_dfs_pre_order())
 
