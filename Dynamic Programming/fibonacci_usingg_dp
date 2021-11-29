@@ -1,0 +1,29 @@
+
+calculations = 0
+
+def fibonacci_master():
+  
+  cache = {}
+
+  def fibonacci(n):
+    global calculations
+    calculations = calculations + 1
+    
+    if n<2:
+      cache[n] = n
+      return n
+
+    if n in cache:
+      print('cache used')
+      return cache[n]
+    
+    else:
+      cache[n] = fibonacci(n-1) + fibonacci(n-2)
+
+    return cache[n]
+  
+  return fibonacci
+
+fib = fibonacci_master()
+print(fib(100))
+print(calculations)
